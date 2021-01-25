@@ -1,6 +1,6 @@
 
 // Login Button Event Handler
-
+      
 const loginButton = document.getElementById('login');
 loginButton.addEventListener('click', function () {
 
@@ -10,8 +10,6 @@ loginButton.addEventListener('click', function () {
     const transactionArea = document.getElementById('transaction-area');
     transactionArea.style.display = "block";
 })
-
-
 
 
 // Functions ====
@@ -25,6 +23,7 @@ function getInputNumber(id) {
     const inputNumber = parseFloat(document.getElementById(id).value);
     return inputNumber;
 }
+
 
 
 // Deposit Button Event Handler
@@ -49,9 +48,6 @@ withdrawBtn.addEventListener('click', function () {
 
     updateBalance('current-withdraw', withdrawAmount);
     updateBalance('current-balance', -1 * withdrawAmount);
-
-
-    // document.getElementById('current-balance').innerText = 
 
     document.getElementById('withdraw-amount').value = "";
 
