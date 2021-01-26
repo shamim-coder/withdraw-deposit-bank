@@ -19,9 +19,6 @@ loginButton.addEventListener('click', function () {
         document.getElementById('emailError').style.color="red";
     }
 
-
-
-    
 })
 
 
