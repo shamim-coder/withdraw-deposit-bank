@@ -9,7 +9,7 @@ loginButton.addEventListener('click', function () {
     if (emailInput == 'test@demo.com' && passwordInput == '12345') {
         const loginArea = document.getElementById('login-area');
         loginArea.style.display = 'none';
-        
+
         const transactionArea = document.getElementById('transaction-area');
         transactionArea.style.display = "block";
     }
@@ -17,8 +17,8 @@ loginButton.addEventListener('click', function () {
         document.getElementById('email').placeholder = "Input Valid Email Address";
         document.getElementById('password').placeholder = "Input Valid Password";
 
-        document.getElementById('email').style.border="2px solid red";
-        document.getElementById('password').style.border="2px solid red";
+        document.getElementById('email').style.border = "2px solid red";
+        document.getElementById('password').style.border = "2px solid red";
     }
 
 })
@@ -42,13 +42,19 @@ function getInputNumber(id) {
 
 const depositBtn = document.getElementById('deposit-btn');
 depositBtn.addEventListener('click', function () {
+    let depositNum = document.getElementById('deposit-amount').value;
+    
+    if (depositNum == "") {
+        document.getElementById('deposit-amount').style.border="2px solid red";
+    } else {
+        const depositAmount = getInputNumber('deposit-amount');
 
-    const depositAmount = getInputNumber('deposit-amount');
+        updateBalance('current-deposit', depositAmount);
+        updateBalance('current-balance', depositAmount);
 
-    updateBalance('current-deposit', depositAmount);
-    updateBalance('current-balance', depositAmount);
-
-    document.getElementById('deposit-amount').value = "";
+        document.getElementById('deposit-amount').value = "";
+        document.getElementById('deposit-amount').style.border="1px solid #ced4da";
+    }
 })
 
 // Withdraw Button Event Handler
@@ -58,12 +64,15 @@ withdrawBtn.addEventListener('click', function () {
     const currentBalance = parseFloat(document.getElementById('current-balance').innerText);
     let withdrawAmount = parseFloat(document.getElementById('withdraw-amount').value);
 
-    if( withdrawAmount > currentBalance) {
-        document.getElementById('noBalanceError').style.display= "block";
+    if (withdrawAmount > currentBalance) {
+        document.getElementById('noBalanceError').style.display = "block";
         document.getElementById('noBalanceError').innerText = "You have not enough balance";
     }
+    else if (document.getElementById('withdraw-amount').value == "") {
+        document.getElementById('withdraw-amount').style.border="2px solid red";
+    }
     else if (withdrawAmount < 0) {
-        document.getElementById('noBalanceError').style.display= "block";
+        document.getElementById('noBalanceError').style.display = "block";
         document.getElementById('noBalanceError').innerText = "Negative Value not Allowed";
     }
     else {
@@ -73,8 +82,9 @@ withdrawBtn.addEventListener('click', function () {
         updateBalance('current-balance', -1 * withdrawAmount);
 
         document.getElementById('withdraw-amount').value = "";
-        document.getElementById('noBalanceError').style.display= "none";
+        document.getElementById('noBalanceError').style.display = "none";
+        document.getElementById('withdraw-amount').style.border="1px solid #ced4da";
     }
-    
-    
+
+
 })
