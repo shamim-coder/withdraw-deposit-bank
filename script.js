@@ -6,7 +6,7 @@ loginButton.addEventListener('click', function () {
     const emailInput = document.getElementById('email').value;
     const passwordInput = document.getElementById('password').value;
 
-    if (emailInput == 'test@demo.com' || passwordInput == '12345') {
+    if (emailInput == 'test@demo.com' && passwordInput == '12345') {
         const loginArea = document.getElementById('login-area');
         loginArea.style.display = 'none';
         
