@@ -14,9 +14,11 @@ loginButton.addEventListener('click', function () {
         transactionArea.style.display = "block";
     }
     else {
-        const emailValidity = document.getElementById('emailError').innerText = "Input Valid Email Address or Password";
+        document.getElementById('email').placeholder = "Input Valid Email Address";
+        document.getElementById('password').placeholder = "Input Valid Password";
 
-        document.getElementById('emailError').style.color="red";
+        document.getElementById('email').style.border="2px solid red";
+        document.getElementById('password').style.border="2px solid red";
     }
 
 })
