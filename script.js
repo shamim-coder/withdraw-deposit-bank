@@ -62,6 +62,10 @@ withdrawBtn.addEventListener('click', function () {
         document.getElementById('noBalanceError').style.display= "block";
         document.getElementById('noBalanceError').innerText = "You have not enough balance";
     }
+    else if (withdrawAmount < 0) {
+        document.getElementById('noBalanceError').style.display= "block";
+        document.getElementById('noBalanceError').innerText = "Negative Value not Allowed";
+    }
     else {
         withdrawAmount = getInputNumber('withdraw-amount');
 
