@@ -6,7 +6,7 @@ loginButton.addEventListener('click', function () {
     const emailInput = document.getElementById('email').value;
     const passwordInput = document.getElementById('password').value;
 
-    if (emailInput == 'test@demo.com' && passwordInput == '12345') {
+    if (emailInput == 'test@demo.com' || passwordInput == '12345') {
         const loginArea = document.getElementById('login-area');
         loginArea.style.display = 'none';
         
@@ -55,12 +55,22 @@ depositBtn.addEventListener('click', function () {
 
 const withdrawBtn = document.getElementById('withdraw-btn');
 withdrawBtn.addEventListener('click', function () {
+    const currentBalance = parseFloat(document.getElementById('current-balance').innerText);
+    let withdrawAmount = parseFloat(document.getElementById('withdraw-amount').value);
 
-    const withdrawAmount = getInputNumber('withdraw-amount');
+    if( withdrawAmount > currentBalance) {
+        document.getElementById('noBalanceError').style.display= "block";
+        document.getElementById('noBalanceError').innerText = "You have not enough balance";
+    }
+    else {
+        withdrawAmount = getInputNumber('withdraw-amount');
 
-    updateBalance('current-withdraw', withdrawAmount);
-    updateBalance('current-balance', -1 * withdrawAmount);
+        updateBalance('current-withdraw', withdrawAmount);
+        updateBalance('current-balance', -1 * withdrawAmount);
 
-    document.getElementById('withdraw-amount').value = "";
-
+        document.getElementById('withdraw-amount').value = "";
+        document.getElementById('noBalanceError').style.display= "none";
+    }
+    
+    
 })
