@@ -1,14 +1,27 @@
 
 // Login Button Event Handler
-      
+
 const loginButton = document.getElementById('login');
 loginButton.addEventListener('click', function () {
+    const emailInput = document.getElementById('email').value;
+    const passwordInput = document.getElementById('password').value;
 
-    const loginArea = document.getElementById('login-area');
-    loginArea.style.display = 'none';
+    if (emailInput == 'test@demo.com' && passwordInput == '12345') {
+        const loginArea = document.getElementById('login-area');
+        loginArea.style.display = 'none';
+        
+        const transactionArea = document.getElementById('transaction-area');
+        transactionArea.style.display = "block";
+    }
+    else {
+        const emailValidity = document.getElementById('emailError').innerText = "Input Valid Email Address or Password";
 
-    const transactionArea = document.getElementById('transaction-area');
-    transactionArea.style.display = "block";
+        document.getElementById('emailError').style.color="red";
+    }
+
+
+
+    
 })
 
 
